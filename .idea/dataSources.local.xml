@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="dataSourceStorageLocal">
+    <data-source name="Rails Blog: production" uuid="6a634474-e47c-4f06-b096-5c0634547e86">
+      <database-info product="" version="" jdbc-version="" driver-name="" driver-version="" />
+      <user-name>macbook</user-name>
+      <user-password>df96df8fdf97df8adfefdfe4dffcdff1df8ddfe8dfe6dfe5dfeddff5dfeedfebdffedfebdfe8dfebdff9dfefdff5dffadfebdff9dff9dffddfe5dff8dfeedf8ddff7df8adf8fdf94</user-password>
+    </data-source>
+    <data-source name="Rails Blog: development" uuid="f39702a2-ecc0-4eff-ab26-b61589345270">
+      <database-info product="PostgreSQL" version="9.5.3" jdbc-version="4.0" driver-name="PostgreSQL Native Driver" driver-version="PostgreSQL 9.4 JDBC4 (build 1201)">
+        <identifier-quote-string>&quot;</identifier-quote-string>
+      </database-info>
+      <case-sensitivity plain-identifiers="lower" quoted-identifiers="exact" />
+      <introspection-scope>Blog_development:pg_catalog,public</introspection-scope>
+      <resolve-scope>Blog_development:public</resolve-scope>
+    </data-source>
+    <data-source name="Rails Blog: test" uuid="59cdd629-7547-424b-9419-d4538764721b">
+      <database-info product="PostgreSQL" version="9.5.3" jdbc-version="4.0" driver-name="PostgreSQL Native Driver" driver-version="PostgreSQL 9.4 JDBC4 (build 1201)">
+        <identifier-quote-string>&quot;</identifier-quote-string>
+      </database-info>
+      <case-sensitivity plain-identifiers="lower" quoted-identifiers="exact" />
+    </data-source>
+  </component>
+</project>
