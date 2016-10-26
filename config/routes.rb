@@ -23,6 +23,17 @@ Rails.application.routes.draw do
 
   end
 
+  resources :users do
+    get :changepassword, on: :collection
+    post :changepassword_update,on: :member
+  end
+
+  resources :sessions,only: [:new,:create] do
+    delete :destroy, on: :collection
+  end
+
+
+
 
 
 end

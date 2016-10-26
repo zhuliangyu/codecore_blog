@@ -7,12 +7,22 @@ body:
 <br>
 Category:
 <%= @post.category.name %>
+<br>
+User:
+<%= @post.user.first_name %>
 
 <hr>
-show Comments:
+Show All Comments:
+<br>
 <% @post.comments.each do |comment| %>
+    title:
     <%= comment.title %>
+    <br>
+    body:
     <%= comment.body %>
+    <br>
+    user:
+    <%= comment.user.first_name %>
     <%= link_to "delete",post_comment_path(@post,comment),method: :delete %>
     <br>
 <% end %>

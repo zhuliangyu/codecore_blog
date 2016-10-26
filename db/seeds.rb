@@ -7,6 +7,14 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 10.times do
+  u=User.new
+  u.first_name=Faker::Name.first_name
+  u.last_name=Faker::Name.last_name
+  u.password="123456"
+  u.save
+end
+
+10.times do
   c=Category.new
   c.name=Faker::Company.profession
   c.save
@@ -18,6 +26,7 @@ end
   p.title=Faker::Company.name #=> "Hirthe-Ritchie"
   p.body=Faker::Lorem.sentence
   p.category=Category.all.sample
+  p.user=User.all.sample
   p.save
 
 
@@ -28,6 +37,7 @@ end
   c.title=Faker::Company.name #=> "Hirthe-Ritchie"
   c.body=Faker::Lorem.sentence
   c.post=Post.all.sample
+  c.user=User.all.sample
   c.save
 
 end

@@ -1,4 +1,6 @@
 class CommentsController < ApplicationController
+  before_action :authenticate_user
+
   def index
     @comments=Comment.order(:created_at)
 
@@ -13,6 +15,7 @@ class CommentsController < ApplicationController
     comment_params=params.require(:comment).permit([:title, :body])
     @comment=Comment.new(comment_params)
     @comment.post=@post
+    @comment.user=current_user
     if @comment.save
       redirect_to post_path(@post)
     else

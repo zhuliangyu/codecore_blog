@@ -1,4 +1,6 @@
 class PostsController < ApplicationController
+  before_action :authenticate_user,except: [:index,:show]
+
   def index
     @posts=Post.order("created_at DESC").page( params[:page])
   end
@@ -10,9 +12,11 @@ class PostsController < ApplicationController
 
   def create
     p=params.require(:post).permit([:title,:body,:category_id])
+
     @post=Post.new(p)
+    @post.user=current_user
     if @post.save
-      redirect_to post_path(post)
+      redirect_to post_path(@post)
     else
       render :new
     end

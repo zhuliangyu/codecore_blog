@@ -1,0 +1,27 @@
+<h1>User sign in</h1>
+
+<%= form_for @user do |f| %>
+    <div>
+      <%= f.label :first_name %>
+      <%= f.text_field :first_name %>
+    </div>
+
+    <div>
+      <%= f.label :last_name %>
+      <%= f.text_field :last_name %>
+    </div>
+
+    <div>
+      <%= f.label :email %>
+      <%= f.email_field :email %>
+    </div>
+    <div>
+      <%= f.label :pasword %>
+      <%= f.password_field :password %>
+    </div>
+    <div>
+      <%= f.label :pasword_confirmation %>
+      <%= f.password_field :password_confirmaton %>
+    </div>
+    <%= f.submit %>
+<% end %>

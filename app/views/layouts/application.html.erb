@@ -10,18 +10,38 @@
 
 <body>
 
-<button type="button">  <%= link_to "Home", home_path %></button>
+<button type="button">
+
+  <%= link_to "Home", home_path %></button>
 |
 <%= link_to "Post List", posts_path %>
 |
 <%= link_to "New Post", new_post_path %>
-
-
+|
+<%= link_to "sign up a new user", new_user_path %>
+|
+<% unless user_sign_in? %>
+    <%= link_to "Sign in", new_session_path %>
+<% end %>
+|
+<% if user_sign_in? %>
+    Hi,<%= User.find(session[:user_id]).first_name %>
+    <%= link_to "Sign out", sessions_path, method: :delete %>
+    <%= link_to "edit profile", edit_user_path(User.find(session[:user_id])) %>
+    <%= link_to "change password", changepassword_users_path	 %>
+<% end %>
 
 <%= form_tag :search do %>
     <%= text_field_tag "keyword", value=@keyword %>
     <%= submit_tag value="search" %>
 
+<% end %>
+
+<% if flash[:notice] %>
+    <%= flash[:notice] %>
+<% end %>
+<% if flash[:alert] %>
+    <%= flash[:alert] %>
 <% end %>
 
 <%= yield %>
