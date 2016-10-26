@@ -1,21 +1,29 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Blog</title>
-    <%= csrf_meta_tags %>
+<head>
+  <title>Blog</title>
+  <%= csrf_meta_tags %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+</head>
 
-  <body>
-  <%= link_to "Home",home_path %>
-  |
-  <%= link_to "List",posts_path %>
-  |
-  <!---->
-  <%= link_to "New",new_post_path	 %>
+<body>
 
-  <%= yield %>
-  </body>
+<button type="button">  <%= link_to "Home", home_path %></button>
+|
+<%= link_to "Post List", posts_path %>
+|
+<%= link_to "New Post", new_post_path %>
+
+
+
+<%= form_tag :search do %>
+    <%= text_field_tag "keyword", value=@keyword %>
+    <%= submit_tag value="search" %>
+
+<% end %>
+
+<%= yield %>
+</body>
 </html>

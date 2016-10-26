@@ -9,6 +9,11 @@
       <%= p.text_area :body %>
     </div>
 
+    <div>
+      <%= p.collection_select(:category_id, Category.all, :id, :name) %>
+    </div>
+
     <%= p.submit %>
 
 <% end %>
+

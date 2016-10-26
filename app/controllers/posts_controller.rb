@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
   def index
-    @posts=Post.order("created_at DESC")
+    @posts=Post.order("created_at DESC").page( params[:page])
   end
 
   def new
@@ -9,7 +9,7 @@ class PostsController < ApplicationController
   end
 
   def create
-    p=params.require(:post).permit([:title,:body])
+    p=params.require(:post).permit([:title,:body,:category_id])
     @post=Post.new(p)
     if @post.save
       redirect_to post_path(post)
@@ -21,17 +21,20 @@ class PostsController < ApplicationController
 
   def show
     @post = Post.find params[:id]
+    @comment=Comment.new
+
 
 
   end
 
   def edit
     @post=Post.find params[:id]
+    render :new
 
   end
 
   def update
-      post_params = params.require(:post).permit(:title, :body)
+      post_params = params.require(:post).permit(:title, :body,:category_id)
       post = Post.find params[:id]
       post.update post_params
       redirect_to post_path(post)
@@ -43,6 +46,20 @@ class PostsController < ApplicationController
     post = Post.find params[:id]
     post.destroy
     redirect_to posts_path
+  end
+
+  def search
+
+    @keyword=params[:keyword]
+    @posts_pre=Post.where(["title ILIKE ? or body ILIKE?", "%#{@keyword}%","%#{@keyword}%"])
+
+
+    @posts=@posts_pre.page( params[:page])
+
+
+
+    render "/posts/index.html.erb"
+
   end
 
 end

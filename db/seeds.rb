@@ -6,11 +6,28 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-100.times do
+10.times do
+  c=Category.new
+  c.name=Faker::Company.profession
+  c.save
+
+end
+
+50.times do
   p=Post.new
   p.title=Faker::Company.name #=> "Hirthe-Ritchie"
   p.body=Faker::Lorem.sentence
+  p.category=Category.all.sample
   p.save
 
+
+end
+
+50.times do
+  c=Comment.new
+  c.title=Faker::Company.name #=> "Hirthe-Ritchie"
+  c.body=Faker::Lorem.sentence
+  c.post=Post.all.sample
+  c.save
 
 end

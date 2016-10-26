@@ -1,3 +1,3 @@
 class Comment < ApplicationRecord
-  validates :body, presence: true, uniqueness: {scope: :post}
+  belongs_to :post
 end

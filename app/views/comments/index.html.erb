@@ -1,0 +1,11 @@
+<h1>Comments#List</h1>
+<% @comments.each do |comment| %>
+
+    title:<%= comment.title %>
+    <br >
+    body:<%= comment.body %>
+
+    <%= link_to "edit",edit_comment_path(comment) %>
+    <%= link_to "delete",comment_path(comment),method: :delete %>
+    <hr>
+<% end %>

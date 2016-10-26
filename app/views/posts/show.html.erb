@@ -1,3 +1,35 @@
 <br>
+title:
 <%= @post.title %>
+<br>
+body:
 <%= @post.body %>
+<br>
+Category:
+<%= @post.category.name %>
+
+<hr>
+show Comments:
+<% @post.comments.each do |comment| %>
+    <%= comment.title %>
+    <%= comment.body %>
+    <%= link_to "delete",post_comment_path(@post,comment),method: :delete %>
+    <br>
+<% end %>
+<hr>
+create a comment:
+<%= form_for [@post,@comment] do |f| %>
+    <div>
+      <%= f.label :title %>
+      <%= f.text_field :title %>
+    </div>
+    <div>
+      <%= f.label :body %>
+      <%= f.text_field :body %>
+    </div>
+    <%= f.submit %>
+<% end %>
+
+
+
+
