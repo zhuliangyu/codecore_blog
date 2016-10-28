@@ -15,6 +15,7 @@ class UsersController < ApplicationController
     else
       render :new
 
+
     end
 
   end
@@ -26,42 +27,51 @@ class UsersController < ApplicationController
 
   def update
     user_params=params.require(:user).permit(:first_name, :last_name, :email)
+
     @user=User.find(params[:id])
-    @user.update(user_params)
-
-    redirect_to home_path, notice: "you have change your info"
-
-
-  end
-
-  def changepassword
-    # render plain: "changepassword"
-
-
-    # render plain: "changepassword"
-
-
-  end
-
-  def changepassword_update
-    user_id=params[:id]
-    olderpassword=params[:oldpassword]
-    password=params[:password]
-    password_confirmation=params[:password_confirmation]
-
-    user=User.find(user_id)
+    # user_params[:password]=@user.password
+    # user_params[:password]=session[:user_id].password
 
 
 
-    if user.authenticate(olderpassword) && password==password_confirmation
-      user.update({password: password})
-      redirect_to home_path, notice: "successfully change your password"
+    if @user.update(user_params)
+      redirect_to home_path, notice: "you have change your info"
     else
-      flash.now[:notice]="wrong!!Please try again"
-      render :changepassword
+      redirect_to home_path, notice: "sth wrong"
+
+
+
+    end
+
+    def changepassword
+      # render plain: "changepassword"
+
+
+      # render plain: "changepassword"
+
+
+    end
+
+    def changepassword_update
+      user_id=params[:id]
+      olderpassword=params[:oldpassword]
+      password=params[:password]
+      password_confirmation=params[:password_confirmation]
+
+      user=User.find(user_id)
+
+
+      if user.authenticate(olderpassword) && password==password_confirmation
+        user.update({password: password})
+        redirect_to home_path, notice: "successfully change your password"
+      else
+        flash.now[:notice]="wrong!!Please try again"
+        render :changepassword
+
+      end
 
     end
 
   end
-
 end
+

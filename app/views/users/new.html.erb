@@ -1,4 +1,8 @@
-<h1>User sign in</h1>
+<h1>User sign up a new user</h1>
+<% if @user.errors.full_messages %>
+    <%= @user.errors.full_messages.join(" ") %>
+
+<% end %>
 
 <%= form_for @user do |f| %>
     <div>

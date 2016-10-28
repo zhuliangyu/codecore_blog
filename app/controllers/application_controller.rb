@@ -15,4 +15,5 @@ class ApplicationController < ActionController::Base
     redirect_to home_path,notice: "please sign in first" unless user_sign_in?
   end
 
+
 end
