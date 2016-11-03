@@ -15,7 +15,7 @@ class PostsController < ApplicationController
 
 
   def index
-    @posts=Post.order("created_at DESC").page(params[:page])
+    @posts=Post.includes(:category).order("created_at DESC").page(params[:page])
   end
 
   def new
@@ -26,7 +26,7 @@ class PostsController < ApplicationController
   end
 
   def create
-    p=params.require(:post).permit([:title, :body, :category_id])
+    p=params.require(:post).permit([:title, :body, :category_id,:image])
 
     @post=Post.new(p)
     @post.user=current_user
