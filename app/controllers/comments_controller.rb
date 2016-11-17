@@ -24,7 +24,6 @@ class CommentsController < ApplicationController
   end
 
   def show
-    #thaisa
 
   end
 
