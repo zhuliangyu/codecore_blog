@@ -3,7 +3,6 @@ class CommentsController < ApplicationController
 
   def index
     @comments=Comment.order(:created_at)
-
   end
 
   def new
@@ -25,7 +24,7 @@ class CommentsController < ApplicationController
   end
 
   def show
-
+    #thaisa
 
   end
 
